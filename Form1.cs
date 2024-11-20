@@ -12,8 +12,8 @@ namespace CSC440Team
         public Form1()
         {
             InitializeComponent();
-            Console.WriteLine("Hello World");
-            MessageBox.Show("Hello World");
+            //Console.WriteLine("Hello World");
+            //MessageBox.Show("Hello World");
             //creting the connection to the database
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
 
@@ -40,7 +40,7 @@ namespace CSC440Team
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                //MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
             //close the connection
             conn.Close();

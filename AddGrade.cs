@@ -17,7 +17,7 @@ namespace CSC440Team
         {
             InitializeComponent();
             Semester.SelectedIndex = 0;
-            Hours.SelectedIndex = 2;
+            //Hours.SelectedIndex = 2;
             Grade.SelectedIndex = 0;
         }
 
@@ -28,19 +28,30 @@ namespace CSC440Team
             string compressedID = StudentID.Text.Replace(" ", "");
 
             string numericPart = compressedNumber.Substring(0, compressedNumber.Length);
-            /*
-            if (!(int.TryParse(numericPart, out int number) && number >= 100))
+            
+            if (int.Parse(numericPart) < 100)
             {
-                // Number is greater than or equal to 100
-                MessageBox.Show("The number is greater than or equal to 100.");
+                
+                MessageBox.Show("Course Number has to be at least 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            */
+            
             string capPrefix = Prefix.Text.ToUpper();
             Course course = new Course(capPrefix, compressedNumber, int.Parse(compressedYear), Semester.Text);
             int CRN = course.CRN;
-            Student student = new Student(int.Parse(compressedID));//we dont really need this
-
+            Student student = new Student(int.Parse(compressedID));
+            //check if student exists
+            if (!student.exists())
+            {
+                MessageBox.Show("Invalid Student ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //check if course exists
+            if (CRN == -1)//that is what we return if the course does not exist
+            {
+                MessageBox.Show("Course Deos Not Exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             //add the grade
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
             string query = "INSERT INTO cabj_grades_1 (StudentID, CRN, Grade) VALUES (@StudentID, @CRN, @Grade)";
@@ -59,16 +70,22 @@ namespace CSC440Team
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+
+                //if we get here that means that we have duplicate entries (we check all other inputs before)
+                MessageBox.Show("Student Already Has A Grade In This Course!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                //MessageBox.Show("An error occurred: " + ex.Message);
                 }
+            conn.Close();
+            student.updateGPA();
             }
-        /*
+        
         //function to calulate the GPA
         private void calculateGPA()
         {
             //get the students grades
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
-            string query = "SELECT Grade FROM cabj_grades_1 WHERE StudentID = @StudentID";
+            string query = "SELECT* FROM cabj_grades_1 WHERE StudentID = @StudentID";
             MySqlConnection conn = new MySqlConnection(connStr);
             try
             {
@@ -80,7 +97,9 @@ namespace CSC440Team
                 int count = 0;
                 while (reader.Read())
                 {
-                    string grade = reader.GetString(0);
+                   
+                    string grade = reader.GetString(reader.GetOrdinal("Grade"));
+                    int crn = reader.GetInt32(reader.GetOrdinal("CRN"));
                     switch (grade)
                     {
                         case "A":
@@ -109,6 +128,6 @@ namespace CSC440Team
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
-        */
+        
     }
 }

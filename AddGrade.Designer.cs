@@ -32,13 +32,11 @@
             Prefix = new TextBox();
             Semester = new ComboBox();
             Year = new MaskedTextBox();
-            Hours = new ComboBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
             Number = new MaskedTextBox();
             button1 = new Button();
             StudentID = new MaskedTextBox();
@@ -80,16 +78,6 @@
             Year.Name = "Year";
             Year.Size = new Size(37, 27);
             Year.TabIndex = 5;
-            // 
-            // Hours
-            // 
-            Hours.AccessibleRole = AccessibleRole.None;
-            Hours.FormattingEnabled = true;
-            Hours.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" });
-            Hours.Location = new Point(254, 299);
-            Hours.Name = "Hours";
-            Hours.Size = new Size(151, 28);
-            Hours.TabIndex = 6;
             // 
             // label1
             // 
@@ -136,15 +124,6 @@
             label5.TabIndex = 11;
             label5.Text = "Year";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(254, 267);
-            label6.Name = "label6";
-            label6.Size = new Size(48, 20);
-            label6.TabIndex = 12;
-            label6.Text = "Hours";
-            // 
             // Number
             // 
             Number.Location = new Point(32, 300);
@@ -175,7 +154,7 @@
             // 
             Grade.FormattingEnabled = true;
             Grade.Items.AddRange(new object[] { "A", "B", "C", "D", "F" });
-            Grade.Location = new Point(476, 154);
+            Grade.Location = new Point(254, 300);
             Grade.Name = "Grade";
             Grade.Size = new Size(151, 28);
             Grade.TabIndex = 16;
@@ -183,7 +162,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(493, 109);
+            label7.Location = new Point(254, 267);
             label7.Name = "label7";
             label7.Size = new Size(57, 20);
             label7.TabIndex = 17;
@@ -199,13 +178,11 @@
             Controls.Add(StudentID);
             Controls.Add(button1);
             Controls.Add(Number);
-            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(Hours);
             Controls.Add(Year);
             Controls.Add(Semester);
             Controls.Add(Prefix);
@@ -223,13 +200,11 @@
         private TextBox Prefix;
         private ComboBox Semester;
         private MaskedTextBox Year;
-        private ComboBox Hours;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
         private MaskedTextBox Number;
         private Button button1;
         private MaskedTextBox StudentID;
