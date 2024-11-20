@@ -30,3 +30,4 @@ C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\ref
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.pdb
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.genruntimeconfig.cache
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\ref\CSC440Team.dll
+C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.AddGrade.resources

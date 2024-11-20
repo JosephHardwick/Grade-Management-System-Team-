@@ -46,5 +46,17 @@ namespace CSC440Team
             conn.Close();
             Console.WriteLine("Done.");
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddGrade addGradeForm = new AddGrade();
+            addGradeForm.Show();
+        }
     }
 }
