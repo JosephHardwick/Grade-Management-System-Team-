@@ -35,12 +35,12 @@ namespace CSC440Team
                 //execute the command
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("executing");
+                //MessageBox.Show("executing");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
             //close the connection
             conn.Close();

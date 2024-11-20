@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             textBox2 = new TextBox();
-            StudentID = new TextBox();
             Prefix = new TextBox();
             Semester = new ComboBox();
             Year = new MaskedTextBox();
@@ -42,6 +41,9 @@
             label6 = new Label();
             Number = new MaskedTextBox();
             button1 = new Button();
+            StudentID = new MaskedTextBox();
+            Grade = new ComboBox();
+            label7 = new Label();
             SuspendLayout();
             // 
             // textBox2
@@ -55,18 +57,11 @@
             textBox2.TabIndex = 0;
             textBox2.Text = "ADD GRADE";
             // 
-            // StudentID
-            // 
-            StudentID.Location = new Point(32, 150);
-            StudentID.Name = "StudentID";
-            StudentID.Size = new Size(125, 27);
-            StudentID.TabIndex = 1;
-            // 
             // Prefix
             // 
             Prefix.Location = new Point(32, 225);
             Prefix.Name = "Prefix";
-            Prefix.Size = new Size(125, 27);
+            Prefix.Size = new Size(132, 27);
             Prefix.TabIndex = 2;
             // 
             // Semester
@@ -83,7 +78,7 @@
             Year.Location = new Point(254, 223);
             Year.Mask = "0000";
             Year.Name = "Year";
-            Year.Size = new Size(151, 27);
+            Year.Size = new Size(37, 27);
             Year.TabIndex = 5;
             // 
             // Hours
@@ -155,7 +150,7 @@
             Number.Location = new Point(32, 300);
             Number.Mask = "000L";
             Number.Name = "Number";
-            Number.Size = new Size(125, 27);
+            Number.Size = new Size(33, 27);
             Number.TabIndex = 13;
             // 
             // button1
@@ -168,11 +163,40 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // StudentID
+            // 
+            StudentID.Location = new Point(29, 153);
+            StudentID.Mask = "000000000";
+            StudentID.Name = "StudentID";
+            StudentID.Size = new Size(66, 27);
+            StudentID.TabIndex = 15;
+            // 
+            // Grade
+            // 
+            Grade.FormattingEnabled = true;
+            Grade.Items.AddRange(new object[] { "A", "B", "C", "D", "F" });
+            Grade.Location = new Point(476, 154);
+            Grade.Name = "Grade";
+            Grade.Size = new Size(151, 28);
+            Grade.TabIndex = 16;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(493, 109);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 20);
+            label7.TabIndex = 17;
+            label7.Text = "GRADE";
+            // 
             // AddGrade
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label7);
+            Controls.Add(Grade);
+            Controls.Add(StudentID);
             Controls.Add(button1);
             Controls.Add(Number);
             Controls.Add(label6);
@@ -185,7 +209,6 @@
             Controls.Add(Year);
             Controls.Add(Semester);
             Controls.Add(Prefix);
-            Controls.Add(StudentID);
             Controls.Add(textBox2);
             Name = "AddGrade";
             Text = "AddGrade";
@@ -197,7 +220,6 @@
 
         //private TextBox Number;
         private TextBox textBox2;
-        private TextBox StudentID;
         private TextBox Prefix;
         private ComboBox Semester;
         private MaskedTextBox Year;
@@ -210,5 +232,8 @@
         private Label label6;
         private MaskedTextBox Number;
         private Button button1;
+        private MaskedTextBox StudentID;
+        private ComboBox Grade;
+        private Label label7;
     }
 }

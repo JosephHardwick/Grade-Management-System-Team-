@@ -74,11 +74,11 @@
             // 
             // button5
             // 
-            button5.Location = new Point(48, 274);
+            button5.Location = new Point(48, 276);
             button5.Name = "button5";
             button5.Size = new Size(122, 29);
             button5.TabIndex = 4;
-            button5.Text = "Add Student";
+            button5.Text = "Edit Grade";
             button5.UseVisualStyleBackColor = true;
             // 
             // Form1
