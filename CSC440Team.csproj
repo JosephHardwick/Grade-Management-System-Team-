@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
+    <PackageReference Include="IronXL.Excel" Version="2024.11.16" />
     <PackageReference Include="MySql.Data" Version="9.1.0" />
   </ItemGroup>
 

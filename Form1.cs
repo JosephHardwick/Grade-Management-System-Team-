@@ -58,5 +58,14 @@ namespace CSC440Team
             AddGrade addGradeForm = new AddGrade();
             addGradeForm.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ImportGrades importGradesForm = new ImportGrades();
+            importGradesForm.Show();
+
+
+        }
     }
 }

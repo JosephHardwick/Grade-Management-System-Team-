@@ -76,6 +76,7 @@ namespace CSC440Team
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show("hour error");
             }
             conn.Close();
             return -1;
@@ -150,6 +151,7 @@ namespace CSC440Team
             {
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(ex.ToString());
+                MessageBox.Show("ERROR");
             }
             conn.Close();
             Console.WriteLine("Done.");

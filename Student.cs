@@ -24,6 +24,11 @@ namespace CSC440Team
         public Student(int ID)
         {
             this.ID = ID;
+            if(!exists())
+            {
+                //MessageBox.Show("Student does not exist.");
+                return;
+            }
             this.GPA = GetGPAFromDatabase(ID);
             this.Name = GetStudentNameFromDatabase(ID);
         }
@@ -66,6 +71,7 @@ namespace CSC440Team
 
         private double GetGPAFromDatabase(int studentID)
         {
+            //updateGPA();
             double gpa = 0.0;
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
             string query = "SELECT GPA FROM cabj_studentinfo_1 WHERE StudentID = @ID";
@@ -166,6 +172,10 @@ namespace CSC440Team
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    if (!reader.HasRows)
+                    {
+                        return;
+                    }
                     int CRN = reader.GetInt32(reader.GetOrdinal("CRN"));
                     char grade = reader.GetChar(reader.GetOrdinal("Grade"));
                     //get the hours for that course
