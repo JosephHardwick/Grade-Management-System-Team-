@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anton_hannouneh\\Source\\Repos\\Grade-Management-System-Team-\\CSC440Team.csproj": {}
+    "C:\\Users\\josep\\source\\repos\\CSC440Team\\CSC440Team.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anton_hannouneh\\Source\\Repos\\Grade-Management-System-Team-\\CSC440Team.csproj": {
+    "C:\\Users\\josep\\source\\repos\\CSC440Team\\CSC440Team.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton_hannouneh\\Source\\Repos\\Grade-Management-System-Team-\\CSC440Team.csproj",
+        "projectUniqueName": "C:\\Users\\josep\\source\\repos\\CSC440Team\\CSC440Team.csproj",
         "projectName": "CSC440Team",
-        "projectPath": "C:\\Users\\anton_hannouneh\\Source\\Repos\\Grade-Management-System-Team-\\CSC440Team.csproj",
-        "packagesPath": "C:\\Users\\anton_hannouneh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton_hannouneh\\Source\\Repos\\Grade-Management-System-Team-\\obj\\",
+        "projectPath": "C:\\Users\\josep\\source\\repos\\CSC440Team\\CSC440Team.csproj",
+        "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josep\\source\\repos\\CSC440Team\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\anton_hannouneh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\josep\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,8 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -86,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
