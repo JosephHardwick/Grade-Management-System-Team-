@@ -42,6 +42,7 @@
             StudentID = new MaskedTextBox();
             Grade = new ComboBox();
             label7 = new Label();
+            mainViewButton = new Button();
             SuspendLayout();
             // 
             // textBox2
@@ -176,11 +177,22 @@
             label7.TabIndex = 17;
             label7.Text = "GRADE";
             // 
+            // mainViewButton
+            // 
+            mainViewButton.Location = new Point(12, 12);
+            mainViewButton.Name = "mainViewButton";
+            mainViewButton.Size = new Size(75, 41);
+            mainViewButton.TabIndex = 20;
+            mainViewButton.Text = "Back to Main View";
+            mainViewButton.UseVisualStyleBackColor = true;
+            mainViewButton.Click += mainViewButton_Click;
+            // 
             // AddGrade
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(426, 338);
+            Controls.Add(mainViewButton);
             Controls.Add(label7);
             Controls.Add(Grade);
             Controls.Add(StudentID);
@@ -219,5 +231,6 @@
         private MaskedTextBox StudentID;
         private ComboBox Grade;
         private Label label7;
+        private Button mainViewButton;
     }
 }

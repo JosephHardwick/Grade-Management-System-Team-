@@ -28,14 +28,14 @@ namespace CSC440Team
             string compressedID = StudentID.Text.Replace(" ", "");
 
             string numericPart = compressedNumber.Substring(0, compressedNumber.Length);
-            
+
             if (int.Parse(numericPart) < 100)
             {
-                
+
                 MessageBox.Show("Course Number has to be at least 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             string capPrefix = Prefix.Text.ToUpper();
             Course course = new Course(capPrefix, compressedNumber, int.Parse(compressedYear), Semester.Text);
             int CRN = course.CRN;
@@ -60,26 +60,26 @@ namespace CSC440Team
 
             try
             {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@StudentID", compressedID);
-                    cmd.Parameters.AddWithValue("@CRN", CRN);
-                    cmd.Parameters.AddWithValue("@Grade", Grade.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Grade added successfully.");
-                }
-                catch (Exception ex)
-                {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@StudentID", compressedID);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+                cmd.Parameters.AddWithValue("@Grade", Grade.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Grade added successfully.");
+            }
+            catch (Exception ex)
+            {
 
                 //if we get here that means that we have duplicate entries (we check all other inputs before)
                 MessageBox.Show("Student Already Has A Grade In This Course!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 //MessageBox.Show("An error occurred: " + ex.Message);
-                }
+            }
             conn.Close();
             student.updateGPA();
-            }
-        
+        }
+
         //function to calulate the GPA
         private void calculateGPA()
         {
@@ -97,7 +97,7 @@ namespace CSC440Team
                 int count = 0;
                 while (reader.Read())
                 {
-                   
+
                     string grade = reader.GetString(reader.GetOrdinal("Grade"));
                     int crn = reader.GetInt32(reader.GetOrdinal("CRN"));
                     switch (grade)
@@ -128,6 +128,13 @@ namespace CSC440Team
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
-        
+
+        private void mainViewButton_Click(object sender, EventArgs e)
+        {
+            //close this window and open up main view
+            Form1 form1 = new Form1();
+            this.Hide();
+            form1.Show();
+        }
     }
 }

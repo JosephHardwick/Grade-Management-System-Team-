@@ -55,6 +55,7 @@
             button2.TabIndex = 1;
             button2.Text = "Delete Grade";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -86,6 +87,7 @@
             button5.TabIndex = 4;
             button5.Text = "Edit Grade";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // Form1
             // 
