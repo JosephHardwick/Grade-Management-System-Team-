@@ -29,14 +29,13 @@ namespace CSC440Team
             {
                 MessageBox.Show("Student does not exist");
             }
-            else
-            {
+            
                 //display all grades in selectable objects
                 //if a grade is selected, display the grade with all pertinent details and allow for editing, run updateGPA() on student after confirmation
 
 
 
-            }
+            
         }
 
         private void mainViewButton_Click(object sender, EventArgs e)

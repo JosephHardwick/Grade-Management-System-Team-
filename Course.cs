@@ -38,14 +38,196 @@ namespace CSC440Team
         public Course(int CRN)
         {
             this.CRN = CRN;
-            /*
+            
             this.Prefix = getPrefixFromDatabase(CRN);
-            this.Number = getNumberFromDatabase(CRN);
+            //this.Number = getNumberFromDatabase(CRN);
             this.Year = getYearFromDatabase(CRN);
             this.Semester = getSemesterFromDatabase(CRN);
-            */
+            this.Number = getNumberFromDatabase(CRN);
+            this.Name = getNameFromDatabase(CRN);
             this.Hours = getHoursFromDatabase(CRN);
         }
+        //year
+        private int getYearFromDatabase(int CRN)
+        {
+
+            if (CRN == -1)
+            {
+                return -1;
+            }
+            //string name = "";
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "SELECT Year FROM cabj_courseinfo_1 WHERE CRN = @CRN";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return reader.GetInt32(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("year error");
+            }
+            conn.Close();
+            return -1;
+        }
+        //number
+        private string getNumberFromDatabase(int CRN)
+        {
+
+            if (CRN == -1)
+            {
+                return "";
+            }
+            //string name = "";
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "SELECT Number FROM cabj_courseinfo_1 WHERE CRN = @CRN";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("number error");
+            }
+            conn.Close();
+            return "";
+        }
+        //name
+        private string getNameFromDatabase(int CRN)
+        {
+            if (CRN == -1)
+            {
+                return "";
+            }
+            //string name = "";
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "SELECT Name FROM cabj_courseinfo_1 WHERE CRN = @CRN";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("Name error");
+            }
+            conn.Close();
+            return "";
+
+        }
+        //semester
+        private string getSemesterFromDatabase(int CRN)
+        {
+            if (CRN == -1)
+            {
+                return "";
+            }
+            //string name = "";
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "SELECT Semester FROM cabj_courseinfo_1 WHERE CRN = @CRN";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("Semester error");
+            }
+            conn.Close();
+            return "";
+
+        }
+        //prefix
+        private string getPrefixFromDatabase(int CRN)
+        {
+            if (CRN == -1)
+            {
+                return "";
+            }
+            //string name = "";
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "SELECT Prefix FROM cabj_courseinfo_1 WHERE CRN = @CRN";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CRN", CRN);
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return reader.GetString(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("prefix error");
+            }
+            conn.Close();
+            return "";
+
+        }
+        //hours
         private int getHoursFromDatabase(int CRN)
         {
             
@@ -81,7 +263,8 @@ namespace CSC440Team
             conn.Close();
             return -1;
         }
-        private string getNameFromDatabase(string Prefix, string Number, int Year, string Semester) {
+        /*
+        private string getNameFromDatabaseBAD(string Prefix, string Number, int Year, string Semester) {//change this to take in the CRN
             string name = "";
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
             string query = "SELECT Name FROM cabj_courseinfo_1 WHERE Prefix = @Prefix AND Number = @Number AND Year = @Year AND Semester = @Semester";
@@ -113,8 +296,9 @@ namespace CSC440Team
 
             return name;
         }
-        
-            
+        */
+           
+          //get the CRN from the database
         private int getCRNFromDatabase(string Prefix, string Number, int Year, string Semester)
         {
             int CRN = -1;

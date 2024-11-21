@@ -27,7 +27,7 @@ namespace CSC440Team
             string compressedYear = Year.Text.Replace(" ", "");
             string compressedID = StudentID.Text.Replace(" ", "");
 
-            string numericPart = compressedNumber.Substring(0, compressedNumber.Length);
+            string numericPart = compressedNumber.Substring(0, compressedNumber.Length - 1);
 
             if (int.Parse(numericPart) < 100)
             {

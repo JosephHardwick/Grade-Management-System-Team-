@@ -32,6 +32,7 @@
             label1 = new Label();
             button1 = new Button();
             mainViewButton = new Button();
+            ButtonPanel = new Panel();
             SuspendLayout();
             // 
             // StudentID
@@ -71,11 +72,19 @@
             mainViewButton.UseVisualStyleBackColor = true;
             mainViewButton.Click += mainViewButton_Click;
             // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Location = new Point(326, 52);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new Size(462, 386);
+            ButtonPanel.TabIndex = 21;
+            // 
             // DeleteGrade
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ButtonPanel);
             Controls.Add(mainViewButton);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -92,5 +101,6 @@
         private Label label1;
         private Button button1;
         private Button mainViewButton;
+        private Panel ButtonPanel;
     }
 }
