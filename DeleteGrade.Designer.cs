@@ -40,30 +40,33 @@
             columnHeader3 = new ColumnHeader();
             button2 = new Button();
             label2 = new Label();
+            button4 = new Button();
             SuspendLayout();
             // 
             // StudentID
             // 
-            StudentID.Location = new Point(12, 48);
+            StudentID.Location = new Point(14, 40);
+            StudentID.Margin = new Padding(3, 4, 3, 4);
             StudentID.Mask = "000000000";
             StudentID.Name = "StudentID";
-            StudentID.Size = new Size(108, 23);
+            StudentID.Size = new Size(62, 27);
             StudentID.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 12);
+            label1.Location = new Point(14, 16);
             label1.Name = "label1";
-            label1.Size = new Size(120, 15);
+            label1.Size = new Size(151, 20);
             label1.TabIndex = 1;
             label1.Text = "Enter the Student's ID\r\n";
             // 
             // button1
             // 
-            button1.Location = new Point(12, 77);
+            button1.Location = new Point(289, 36);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(108, 23);
+            button1.Size = new Size(123, 31);
             button1.TabIndex = 8;
             button1.Text = "View Grades";
             button1.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@
             // 
             // mainViewButton
             // 
-            mainViewButton.Location = new Point(12, 335);
+            mainViewButton.Location = new Point(14, 514);
+            mainViewButton.Margin = new Padding(3, 4, 3, 4);
             mainViewButton.Name = "mainViewButton";
-            mainViewButton.Size = new Size(75, 41);
+            mainViewButton.Size = new Size(86, 55);
             mainViewButton.TabIndex = 20;
             mainViewButton.Text = "Back to Main View";
             mainViewButton.UseVisualStyleBackColor = true;
@@ -82,9 +86,10 @@
             // listView1
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader5, columnHeader6, columnHeader1, columnHeader3 });
-            listView1.Location = new Point(138, 12);
+            listView1.Location = new Point(14, 75);
+            listView1.Margin = new Padding(3, 4, 3, 4);
             listView1.Name = "listView1";
-            listView1.Size = new Size(403, 321);
+            listView1.Size = new Size(401, 388);
             listView1.TabIndex = 21;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -124,9 +129,11 @@
             // 
             // button2
             // 
-            button2.Location = new Point(429, 340);
+            button2.ForeColor = Color.Red;
+            button2.Location = new Point(259, 514);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(112, 23);
+            button2.Size = new Size(153, 56);
             button2.TabIndex = 22;
             button2.Text = "Delete Grade";
             button2.UseVisualStyleBackColor = true;
@@ -135,17 +142,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(19, 134);
+            label2.Location = new Point(142, 467);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 23;
-            label2.Text = "label2";
+            // 
+            // button4
+            // 
+            button4.Location = new Point(106, 514);
+            button4.Name = "button4";
+            button4.Size = new Size(147, 55);
+            button4.TabIndex = 24;
+            button4.Text = "Edit Grade";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // DeleteGrade
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(556, 388);
+            ClientSize = new Size(430, 574);
+            Controls.Add(button4);
             Controls.Add(label2);
             Controls.Add(button2);
             Controls.Add(listView1);
@@ -153,8 +170,9 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(StudentID);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "DeleteGrade";
-            Text = "DeleteGrade";
+            Text = "GradeSelect";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,5 +191,6 @@
         private ColumnHeader columnHeader3;
         private Button button2;
         private Label label2;
+        private Button button4;
     }
 }

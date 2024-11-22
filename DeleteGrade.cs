@@ -14,6 +14,8 @@ namespace CSC440Team
     public partial class DeleteGrade : Form
     {
         private int studentID;
+        //to make sure the user picks a grade to delete or edir
+        private bool gradeSelected = false;
         public DeleteGrade()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace CSC440Team
 
 
         }
-        private void populateList(string cName,string course, string semester, string grade, string crn)
+        private void populateList(string cName, string course, string semester, string grade, string crn)
         {
 
 
@@ -39,6 +41,7 @@ namespace CSC440Team
         private void button1_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
+            gradeSelected = false;//reset every time the button is clicked
             // Compress the string in the masked text box to an int
             string compressedID = StudentID.Text.Replace(" ", "");
             studentID = int.Parse(compressedID);
@@ -71,7 +74,7 @@ namespace CSC440Team
                 }
                 while (reader.Read())
                 {
-                    
+
                     int CRN = reader.GetInt32(reader.GetOrdinal("CRN"));
                     char grade = reader.GetChar(reader.GetOrdinal("Grade"));
                     Course course = new Course(CRN); // Use the CRN constructor
@@ -92,7 +95,7 @@ namespace CSC440Team
                 MessageBox.Show(ex.ToString());
             }
             label2.Enabled = true;
-            label2.Text = "Deleting Grade For: \n" + name ;
+            label2.Text = "Showing Grades For: \n" + name;
             MessageBox.Show(name);
             // Close the connection
             conn.Close();
@@ -109,6 +112,16 @@ namespace CSC440Team
         //delete button
         private void button2_Click(object sender, EventArgs e)
         {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                gradeSelected = true;
+            }
+            if (!gradeSelected)
+            {
+                //MessageBox.Show("Please select A Grade To Delete.");
+                return;
+            }
+
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
             string query = "DELETE FROM cabj_grades_1 WHERE StudentID = @ID AND CRN = @CRN";
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
@@ -123,6 +136,7 @@ namespace CSC440Team
                 cmd.Parameters.AddWithValue("@CRN", CRN);
 
                 cmd.ExecuteNonQuery();
+                MessageBox.Show("Grade Deleted.");
             }
             catch (Exception ex)
             {
@@ -133,7 +147,28 @@ namespace CSC440Team
             button1_Click(this, EventArgs.Empty); // Call button1_Click method programmatically
             Student student = new Student(studentID);
             student.updateGPA();
-
+            gradeSelected = false;//if the grade is deleted, the user must select a new grade
         }
+        //edit button clicked
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                gradeSelected = true;
+            }
+            if (!gradeSelected)
+            {
+                return;
+            }
+            //display a small window(form to update the grade)
+            EditWindow editWindow = new EditWindow(studentID, int.Parse(listView1.SelectedItems[0].SubItems[4].Text));
+            editWindow.ShowDialog(); // Use ShowDialog to wait until the form is closed
+
+            listView1.Items.Clear();
+            button1_Click(this, EventArgs.Empty);
+            gradeSelected = false;
+        }
+        
+
     }
 }
