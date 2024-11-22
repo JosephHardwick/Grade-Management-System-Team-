@@ -41,6 +41,8 @@ namespace CSC440Team
         private void button1_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
+            label2.Text = "";
+
             gradeSelected = false;//reset every time the button is clicked
             // Compress the string in the masked text box to an int
             string compressedID = StudentID.Text.Replace(" ", "");
