@@ -38,7 +38,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(15, 23);
+            label1.Location = new Point(87, 45);
             label1.Name = "label1";
             label1.Size = new Size(97, 15);
             label1.TabIndex = 0;
@@ -46,9 +46,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 70);
+            button1.Location = new Point(15, 108);
             button1.Name = "button1";
-            button1.Size = new Size(100, 62);
+            button1.Size = new Size(235, 166);
             button1.TabIndex = 1;
             button1.Text = "generate transcript";
             button1.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 41);
+            textBox1.Location = new Point(15, 79);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
+            textBox1.Size = new Size(238, 23);
             textBox1.TabIndex = 2;
             // 
             // fileSystemWatcher1
@@ -70,7 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(126, 145);
+            ClientSize = new Size(255, 284);
             Controls.Add(textBox1);
             Controls.Add(button1);
             Controls.Add(label1);
