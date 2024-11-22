@@ -75,6 +75,18 @@ namespace CSC440Team
             deleteGradeForm.Show();
         }
 
-        
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EditGrade editGradeForm = new EditGrade();
+            editGradeForm.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PrintTranscript printTranscriptForm = new PrintTranscript();
+            printTranscriptForm.Show();
+        }
     }
 }

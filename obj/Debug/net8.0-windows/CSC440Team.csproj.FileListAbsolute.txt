@@ -145,6 +145,7 @@ C:\Users\anton_hannouneh\Source\Repos\Grade-Management-System-Team-\obj\Debug\ne
 C:\Users\anton_hannouneh\Source\Repos\Grade-Management-System-Team-\obj\Debug\net8.0-windows\ref\CSC440Team.dll
 C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.DeleteGrade.resources
 C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.EditGrade.resources
+<<<<<<< HEAD
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\bin\Debug\net8.0-windows\BitMiracle.LibTiff.NET.dll
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\bin\Debug\net8.0-windows\ExcelDataReader.dll
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\bin\Debug\net8.0-windows\ExcelDataReader.DataSet.dll
@@ -169,3 +170,6 @@ C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\bin\Debug\net8.0-windows\Six
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.DeleteGrade.resources
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.ImportGrades.resources
 C:\Users\anton\OneDrive\Documents\CSC440\CSC440TEAM\obj\Debug\net8.0-windows\CSC440Team.EditWindow.resources
+=======
+C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.PrintTranscript.resources
+>>>>>>> feature/transcript
