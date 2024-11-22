@@ -145,3 +145,4 @@ C:\Users\anton_hannouneh\Source\Repos\Grade-Management-System-Team-\obj\Debug\ne
 C:\Users\anton_hannouneh\Source\Repos\Grade-Management-System-Team-\obj\Debug\net8.0-windows\ref\CSC440Team.dll
 C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.DeleteGrade.resources
 C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.EditGrade.resources
+C:\Users\josep\source\repos\CSC440Team\obj\Debug\net8.0-windows\CSC440Team.PrintTranscript.resources
