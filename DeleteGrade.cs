@@ -32,7 +32,7 @@ namespace CSC440Team
             item.SubItems.Add(semester);
             item.SubItems.Add(grade);
             item.SubItems.Add(cName);
-            item.SubItems.Add(crn);
+            item.Tag = crn;
             listView1.Items.Add(item);
 
 
@@ -131,7 +131,7 @@ namespace CSC440Team
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                string CRN = listView1.SelectedItems[0].SubItems[4].Text;
+                string CRN = listView1.SelectedItems[0].Tag.ToString();
                 cmd.Parameters.AddWithValue("@ID", studentID);
                 cmd.Parameters.AddWithValue("@CRN", CRN);
 

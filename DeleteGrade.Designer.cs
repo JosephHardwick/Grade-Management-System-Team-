@@ -37,7 +37,6 @@
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
             button2 = new Button();
             label2 = new Label();
             button4 = new Button();
@@ -45,28 +44,26 @@
             // 
             // StudentID
             // 
-            StudentID.Location = new Point(14, 40);
-            StudentID.Margin = new Padding(3, 4, 3, 4);
+            StudentID.Location = new Point(12, 30);
             StudentID.Mask = "000000000";
             StudentID.Name = "StudentID";
-            StudentID.Size = new Size(62, 27);
+            StudentID.Size = new Size(55, 23);
             StudentID.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 16);
+            label1.Location = new Point(12, 12);
             label1.Name = "label1";
-            label1.Size = new Size(151, 20);
+            label1.Size = new Size(120, 15);
             label1.TabIndex = 1;
             label1.Text = "Enter the Student's ID\r\n";
             // 
             // button1
             // 
-            button1.Location = new Point(289, 36);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(253, 27);
             button1.Name = "button1";
-            button1.Size = new Size(123, 31);
+            button1.Size = new Size(108, 23);
             button1.TabIndex = 8;
             button1.Text = "View Grades";
             button1.UseVisualStyleBackColor = true;
@@ -74,10 +71,9 @@
             // 
             // mainViewButton
             // 
-            mainViewButton.Location = new Point(14, 514);
-            mainViewButton.Margin = new Padding(3, 4, 3, 4);
+            mainViewButton.Location = new Point(12, 386);
             mainViewButton.Name = "mainViewButton";
-            mainViewButton.Size = new Size(86, 55);
+            mainViewButton.Size = new Size(75, 41);
             mainViewButton.TabIndex = 20;
             mainViewButton.Text = "Back to Main View";
             mainViewButton.UseVisualStyleBackColor = true;
@@ -85,11 +81,11 @@
             // 
             // listView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader5, columnHeader6, columnHeader1, columnHeader3 });
-            listView1.Location = new Point(14, 75);
-            listView1.Margin = new Padding(3, 4, 3, 4);
+            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader2, columnHeader5, columnHeader6, columnHeader1 });
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(12, 56);
             listView1.Name = "listView1";
-            listView1.Size = new Size(401, 388);
+            listView1.Size = new Size(352, 292);
             listView1.TabIndex = 21;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
@@ -98,42 +94,35 @@
             // 
             columnHeader2.DisplayIndex = 1;
             columnHeader2.Text = "Course";
-            columnHeader2.Width = 100;
+            columnHeader2.Width = 88;
             // 
             // columnHeader5
             // 
             columnHeader5.DisplayIndex = 2;
             columnHeader5.Text = "Semester";
             columnHeader5.TextAlign = HorizontalAlignment.Center;
-            columnHeader5.Width = 100;
+            columnHeader5.Width = 88;
             // 
             // columnHeader6
             // 
             columnHeader6.DisplayIndex = 3;
             columnHeader6.Text = "Grade";
             columnHeader6.TextAlign = HorizontalAlignment.Center;
-            columnHeader6.Width = 100;
+            columnHeader6.Width = 88;
             // 
             // columnHeader1
             // 
             columnHeader1.DisplayIndex = 0;
             columnHeader1.Text = "Name";
             columnHeader1.TextAlign = HorizontalAlignment.Center;
-            columnHeader1.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "CRN";
-            columnHeader3.TextAlign = HorizontalAlignment.Center;
-            columnHeader3.Width = 100;
+            columnHeader1.Width = 88;
             // 
             // button2
             // 
             button2.ForeColor = Color.Red;
-            button2.Location = new Point(259, 514);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(227, 386);
             button2.Name = "button2";
-            button2.Size = new Size(153, 56);
+            button2.Size = new Size(134, 42);
             button2.TabIndex = 22;
             button2.Text = "Delete Grade";
             button2.UseVisualStyleBackColor = true;
@@ -142,16 +131,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(142, 467);
+            label2.Location = new Point(124, 350);
             label2.Name = "label2";
-            label2.Size = new Size(0, 20);
+            label2.Size = new Size(0, 15);
             label2.TabIndex = 23;
             // 
             // button4
             // 
-            button4.Location = new Point(106, 514);
+            button4.Location = new Point(93, 386);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(147, 55);
+            button4.Size = new Size(129, 41);
             button4.TabIndex = 24;
             button4.Text = "Edit Grade";
             button4.UseVisualStyleBackColor = true;
@@ -159,9 +149,9 @@
             // 
             // DeleteGrade
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(430, 574);
+            ClientSize = new Size(376, 430);
             Controls.Add(button4);
             Controls.Add(label2);
             Controls.Add(button2);
@@ -170,7 +160,6 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(StudentID);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "DeleteGrade";
             Text = "GradeSelect";
             ResumeLayout(false);
@@ -188,7 +177,6 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader5;
         private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader3;
         private Button button2;
         private Label label2;
         private Button button4;
