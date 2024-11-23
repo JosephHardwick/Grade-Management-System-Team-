@@ -161,7 +161,7 @@ namespace CSC440Team
                 return;
             }
             //display a small window(form to update the grade)
-            EditWindow editWindow = new EditWindow(studentID, int.Parse(listView1.SelectedItems[0].SubItems[4].Text));
+            EditWindow editWindow = new EditWindow(studentID, int.Parse(listView1.SelectedItems[0].Tag.ToString()));
             editWindow.ShowDialog(); // Use ShowDialog to wait until the form is closed
 
             listView1.Items.Clear();
