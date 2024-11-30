@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IronXL;
+using iTextSharp;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace CSC440Team
 {
@@ -22,83 +25,96 @@ namespace CSC440Team
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
-            string query = "SELECT * FROM cabj_grades_1 WHERE StudentID = @StudentID";
-            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
-
-            Student student = new Student(int.Parse(textBox1.Text));
-
-            WorkBook workbook = WorkBook.Create(ExcelFileFormat.XLSX);
-            var sheet = workbook.CreateWorkSheet(student.Name+"Transcript");
-
-            sheet["A1"].Value = "Course Name";
-            sheet["B1"].Value = "Course Number";
-            sheet["C1"].Value = "Semester";
-            sheet["D1"].Value = "Grade";
-            sheet["E1"].Value = "CRN";
-            sheet["F1"].Value = "Hours";
-            sheet["G1"].Value = "Year";
-
-            sheet["I3"].Value = "Student Name:";
-            sheet["J3"].Value = student.Name;
-
-            student.updateGPA();
-            sheet["I4"].Value = "GPA:";
-            sheet["J4"].Value = student.GPA;
-
-            sheet["I5"].Value = "Student ID:";
-            sheet["J5"].Value = student.ID;
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
-            saveFileDialog.Title = "Save Transcript";
-            saveFileDialog.ShowDialog();
-            
 
 
-            try
+            int studentID = int.Parse(textBox1.Text);
+            Student student = new Student(studentID);
+            //validate that student exists
+            if (!student.exists())
             {
+                MessageBox.Show("Student does not exist");
+                return;
+            }
+
+            //get student info
+
+            String ID = textBox1.Text;
+            String Name = student.Name;
+            String GPA = student.GPA.ToString();
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                Title = "Save Transcript as PDF"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+                string query = "SELECT * FROM cabj_grades_1 JOIN cabj_courseinfo_1 ON cabj_grades_1.CRN = cabj_courseinfo_1.CRN WHERE StudentID = @ID";
+                MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@StudentID", textBox1.Text);
-
+                cmd.Parameters.AddWithValue("@ID", ID);
                 MySqlDataReader reader = cmd.ExecuteReader();
+
+                //check if student has records
                 if (!reader.HasRows)
                 {
                     MessageBox.Show("Student has no records");
                     return;
                 }
-                int cnt = 2;
-                while (reader.Read())
+
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
                 {
-                    int CRN = reader.GetInt32(reader.GetOrdinal("CRN"));
-                    char grade = reader.GetChar(reader.GetOrdinal("Grade"));
-                    Course course = new Course(CRN);
+                    Document doc = new Document(PageSize.A4);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
 
-                    sheet[$"A{cnt}"].Value = course.Name;
-                    sheet[$"B{cnt}"].Value = course.Number;
-                    sheet[$"C{cnt}"].Value = course.Semester;
-                    sheet[$"D{cnt}"].Value = grade.ToString();
-                    sheet[$"E{cnt}"].Value = CRN;
-                    sheet[$"F{cnt}"].Value = course.Hours;
-                    sheet[$"G{cnt}"].Value = course.Year;
-                   
+                    // Add student info
+                    doc.Add(new Paragraph($"{Name}'s Transcript", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18)));
+                    doc.Add(new Paragraph($"Student ID: {ID}"));
+                    doc.Add(new Paragraph($"Name: {Name}"));
+                    doc.Add(new Paragraph($"GPA: {GPA}"));
+                    doc.Add(new Paragraph(" ")); // Add a blank line
 
-                    cnt++;
+                    // Add table for courses
+                    PdfPTable table = new PdfPTable(6);
+                    table.AddCell("Course Desc");
+                    table.AddCell("Course Name");
+                    table.AddCell("Year");
+                    table.AddCell("Semester");
+                    table.AddCell("Hours");
+                    table.AddCell("Grade");
+
+                    //itteratively add courses
+                    while (reader.Read())
+                    {
+                        int CRN = reader.GetInt32(reader.GetOrdinal("CRN"));
+                        string grade = reader.GetString(reader.GetOrdinal("grade"));
+                        string courseName = reader.IsDBNull(reader.GetOrdinal("name")) ? "N/A" : reader.GetString(reader.GetOrdinal("name"));
+
+                        string prefix = reader.GetString(reader.GetOrdinal("prefix"));
+                        string number = reader.GetString(reader.GetOrdinal("number"));
+                        string year = reader.GetInt32(reader.GetOrdinal("year")).ToString();
+                        string semester = reader.GetString(reader.GetOrdinal("semester"));
+                        int hours = reader.GetInt32(reader.GetOrdinal("hours"));
+
+                        table.AddCell(courseName);
+                        table.AddCell(prefix + " " + number);
+                        table.AddCell(year);
+                        table.AddCell(semester);
+                        table.AddCell(hours.ToString());
+                        table.AddCell(grade);
+                    }
+
+                    doc.Add(table);
+                    doc.Close();
                 }
-                
-                workbook.SaveAs(saveFileDialog.FileName);
             }
-            catch (Exception ex)
-            {
-
-                //if we get here that means that we have duplicate entries (we check all other inputs before)
-                MessageBox.Show("Student Already Has A Grade In This Course!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                //MessageBox.Show("An error occurred: " + ex.Message);
-            }
-            conn.Close();
-            student.updateGPA();
         }
     }
 }
