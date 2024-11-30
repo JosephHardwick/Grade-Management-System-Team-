@@ -34,6 +34,18 @@ namespace CSC440Team
             this.CRN = getCRNFromDatabase(Prefix, Number, Year, Semester);
             this.Hours = getHoursFromDatabase(this.CRN);
         }
+
+        public Course(string prefix, string number, int year, string semester, int hours)
+        {
+
+            //this.Name = name;
+            this.Prefix = prefix;
+            this.Number = number;
+            this.Year = year;
+            this.Semester = semester;
+            this.CRN = getCRNFromDatabase(Prefix, Number, Year, Semester);
+            this.Hours = hours;
+        }
         //second constructor to create a course object from CRN
         public Course(int CRN)
         {
@@ -341,6 +353,43 @@ namespace CSC440Team
             Console.WriteLine("Done.");
 
             return CRN;
+        }
+
+        public static int createCourse(string Prefix, string Number, string Year, string Semester, int Hours)
+        {
+
+            string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+            string query = "INSERT INTO cabj_courseinfo_1  (Prefix, Year, Semester, Number, Hours) VALUES (@Prefix, @Year, @Semester, @Number, @Hours)";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+            MessageBox.Show("RUNNING CRN METHOD");
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Prefix", Prefix);
+                cmd.Parameters.AddWithValue("@Number", Number);
+                cmd.Parameters.AddWithValue("@Year", Year);
+                cmd.Parameters.AddWithValue("@Semester", Semester);
+                cmd.Parameters.AddWithValue("@Hours", Hours);
+                cmd.ExecuteNonQuery();
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show("ERROR");
+            }
+            conn.Close();
+            Console.WriteLine("Done.");
+            Course course = new Course(Prefix, Number, int.Parse(Year), Semester);
+            return course.CRN;
+
         }
     }
 }

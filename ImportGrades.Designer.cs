@@ -29,37 +29,65 @@
         private void InitializeComponent()
         {
             openFileDialog1 = new OpenFileDialog();
-            Browse = new Button();
+            importFile = new Button();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            button1 = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Browse
+            // importFile
             // 
-            Browse.Location = new Point(289, 89);
-            Browse.Name = "Browse";
-            Browse.Size = new Size(75, 23);
-            Browse.TabIndex = 0;
-            Browse.Text = "Browse";
-            Browse.UseVisualStyleBackColor = true;
-            Browse.Click += Browse_Click;
+            importFile.Location = new Point(12, 63);
+            importFile.Name = "importFile";
+            importFile.Size = new Size(170, 23);
+            importFile.TabIndex = 0;
+            importFile.Text = "Import File";
+            importFile.UseVisualStyleBackColor = true;
+            importFile.Click += Browse_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 92);
+            button1.Name = "button1";
+            button1.Size = new Size(170, 23);
+            button1.TabIndex = 1;
+            button1.Text = "Import Folder";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(59, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Import Grades";
             // 
             // ImportGrades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(Browse);
+            ClientSize = new Size(200, 127);
+            Controls.Add(label1);
+            Controls.Add(button1);
+            Controls.Add(importFile);
             Name = "ImportGrades";
             Text = "ImportGrades";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private OpenFileDialog openFileDialog1;
-        private Button Browse;
+        private Button importFile;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private Button button1;
+        private Label label1;
     }
 }

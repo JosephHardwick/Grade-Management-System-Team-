@@ -16,6 +16,9 @@ namespace CSC440Team
 {
     internal class Student
     {
+        private static readonly string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
+
+
         public string Name;
         public int ID;
         public double GPA;
@@ -256,6 +259,38 @@ namespace CSC440Team
                 conn.Close();
 
             
+        }
+
+        public static int createStudent(string name)
+        {
+            MySqlConnection conn = new MySqlConnection(connStr);
+            string query = "INSERT INTO cabj_studentinfo_1 (name, GPA) VALUES (@name, 0); SELECT LAST_INSERT_ID();";
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@name", name);
+
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    return (int)reader.GetInt64(0);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
+            }
+            //close the connection
+            conn.Close();
+
+            return -1;
         }
     }
 }
