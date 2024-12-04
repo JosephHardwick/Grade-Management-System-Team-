@@ -44,6 +44,10 @@ namespace CSC440Team
             gradeSelected = false;//reset every time the button is clicked
             // Compress the string in the masked text box to an int
             string compressedID = StudentID.Text.Replace(" ", "");
+            if (compressedID == "")
+            {
+                return;
+            }
             studentID = int.Parse(compressedID);
 
             Student student = new Student(int.Parse(compressedID));

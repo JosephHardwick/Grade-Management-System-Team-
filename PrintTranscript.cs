@@ -27,7 +27,15 @@ namespace CSC440Team
 
 
 
+            if (textBox1.Text == "")
+            {
+                return;
+            }
+
             int studentID = int.Parse(textBox1.Text);
+
+            
+            
             Student student = new Student(studentID);
             //validate that student exists
             if (!student.exists())
@@ -39,6 +47,9 @@ namespace CSC440Team
             //get student info
 
             String ID = textBox1.Text;
+
+            student.updateGPA();
+
             String Name = student.Name;
             String GPA = student.GPA.ToString();
 

@@ -161,7 +161,7 @@ namespace CSC440Team
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("Name error");
+                //MessageBox.Show("Name error");
             }
             conn.Close();
             return "";
@@ -318,7 +318,7 @@ namespace CSC440Team
             string query = "SELECT CRN FROM cabj_courseinfo_1 WHERE Prefix = @Prefix AND Number = @Number AND Year = @Year AND Semester = @Semester";
 
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
-            MessageBox.Show("RUNNING CRN METHOD");
+           // MessageBox.Show("RUNNING CRN METHOD");
 
             try
             {
@@ -331,10 +331,10 @@ namespace CSC440Team
                 cmd.Parameters.AddWithValue("@Year", Year);
                 cmd.Parameters.AddWithValue("@Semester", Semester);
                 //cmd.ExecuteNonQuery();
-                MessageBox.Show(Prefix);
-                MessageBox.Show(Number);
-                MessageBox.Show(Year.ToString());
-                MessageBox.Show(Semester);
+                //MessageBox.Show(Prefix);
+                //MessageBox.Show(Number);
+                //MessageBox.Show(Year.ToString());
+                //MessageBox.Show(Semester);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -362,7 +362,7 @@ namespace CSC440Team
             string query = "INSERT INTO cabj_courseinfo_1  (Prefix, Year, Semester, Number, Hours) VALUES (@Prefix, @Year, @Semester, @Number, @Hours)";
 
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
-            MessageBox.Show("RUNNING CRN METHOD");
+            //374MessageBox.Show("RUNNING CRN METHOD");
 
             try
             {

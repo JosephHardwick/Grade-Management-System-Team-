@@ -27,7 +27,13 @@ namespace CSC440Team
             string compressedYear = Year.Text.Replace(" ", "");
             string compressedID = StudentID.Text.Replace(" ", "");
 
-            string numericPart = compressedNumber.Substring(0, compressedNumber.Length - 1);
+            string numericPart = compressedNumber.Substring(0, compressedNumber.Length);
+
+            if(StudentID.Text == "" || Prefix.Text == "" || Number.Text == "" || Year.Text == "" || Semester.Text == "" || Grade.Text == "")
+            {
+                MessageBox.Show("All fields are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (int.Parse(numericPart) < 100)
             {
@@ -49,7 +55,7 @@ namespace CSC440Team
             //check if course exists
             if (CRN == -1)//that is what we return if the course does not exist
             {
-                MessageBox.Show("Course Deos Not Exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Course Does Not Exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //add the grade

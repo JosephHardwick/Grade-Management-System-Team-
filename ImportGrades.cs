@@ -45,7 +45,7 @@ namespace CSC440Team
                 filePath = openFileDialog1.FileName;
                 file = openFileDialog1.SafeFileName;
                 fileNoEx = file.Substring(0, file.Length - 5);
-                MessageBox.Show(file);
+                //MessageBox.Show(file);
             }
 
             if (!IsValidFileName(file))
@@ -65,6 +65,7 @@ namespace CSC440Team
 
             //setup .xlsx reader
             GradeInserions(filePath, CRN);
+            MessageBox.Show("Grades imported");
         }
 
 
@@ -132,6 +133,9 @@ namespace CSC440Team
 
         private void GradeInserions(string filePath, int CRN)
         {
+
+            IronXL.License.LicenseKey = "IRONSUITE.JOSEPHHARDWICK04.GMAIL.COM.22294-29C49DA80D-JJEIV-V5VLMKZCCM4P-CZ2IVHPSSYAR-EEY4W3JWWWJH-XXOA4PUGSQID-MR3GM4ARNUSQ-EEJVOQR6HOBD-M722E4-TDKLWRRI5RSOEA-DEPLOYMENT.TRIAL-WPI7OV.TRIAL.EXPIRES.01.JAN.2025";
+
             var workbook = WorkBook.Load(filePath);
             var workSheet = workbook.WorkSheets.First();
             var cell = workSheet["A2"];
@@ -162,10 +166,10 @@ namespace CSC440Team
                 //if student does not exist, create them
                 if (!student.exists())
                 {
-                    MessageBox.Show("Creating DB entry for: " + workSheet[$"A{i}"].StringValue);
+                    //MessageBox.Show("Creating DB entry for: " + workSheet[$"A{i}"].StringValue);
                     int newID = Student.createStudent(workSheet[$"A{i}"].StringValue);
 
-                    MessageBox.Show("auto inc returned" + newID.ToString());
+                    //MessageBox.Show("auto inc returned" + newID.ToString());
                     workSheet[$"B{i}"].Value = newID;
                     workbook.Save();
 
@@ -217,7 +221,7 @@ namespace CSC440Team
 
             }
 
-            MessageBox.Show("grades inserted successfully");
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -239,8 +243,8 @@ namespace CSC440Team
                     return;
                 }
             }
-            MessageBox.Show(folderPath);
-            MessageBox.Show(folderName);
+           // MessageBox.Show(folderPath);
+            //MessageBox.Show(folderName);
 
             //parsing filepaths, names, and raw names for later validation
             string[] filePaths = Directory.GetFiles(folderPath, "*.xlsx");
@@ -251,7 +255,7 @@ namespace CSC440Team
             for (int i = 0; i < fileNames.Length; i++)
             {
                 fileNames[i] = fileNames[i].Substring(fileNames[i].LastIndexOf("\\") + 1);
-                MessageBox.Show(fileNames[i]);
+                //MessageBox.Show(fileNames[i]);
             }
 
             //creating fileNames array without extension
@@ -261,7 +265,7 @@ namespace CSC440Team
                 fileNamesNoEx[i] = fileNamesNoEx[i].Substring(0, fileNamesNoEx[i].Length - 5);
 
 
-                MessageBox.Show(fileNamesNoEx[i]);
+                //MessageBox.Show(fileNamesNoEx[i]);
             }
 
 
@@ -271,7 +275,7 @@ namespace CSC440Team
             {
                 if (IsValidFileNameFromFolder(fileNames[i]))
                 {
-                    MessageBox.Show("Valid file name " + fileNames[i]);
+                    //MessageBox.Show("Valid file name " + fileNames[i]);
                 }
                 else
                 {
@@ -292,10 +296,10 @@ namespace CSC440Team
                 int CRN = course.CRN;
                 if (CRN == -1)
                 {
-                    MessageBox.Show("Creating course: " + fileDetails[0] + " " + fileDetails[1]);
+                    //MessageBox.Show("Creating course: " + fileDetails[0] + " " + fileDetails[1]);
                     CRN = Course.createCourse(fileDetails[0], fileDetails[1], folderDetails[1], folderDetails[2], int.Parse(fileDetails[2]));
                 }
-                MessageBox.Show("CRN: " + CRN);
+                //MessageBox.Show("CRN: " + CRN);
 
             }
             //At this point, both file/folder name validation is done
@@ -313,6 +317,8 @@ namespace CSC440Team
                 int CRN = course.CRN;
                 GradeInserions(filePaths[i], CRN);
             }
+            MessageBox.Show("Grades imported");
+
 
 
         }

@@ -61,7 +61,7 @@ namespace CSC440Team
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             ImportGrades importGradesForm = new ImportGrades();
             importGradesForm.Show();
 
@@ -84,7 +84,7 @@ namespace CSC440Team
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             PrintTranscript printTranscriptForm = new PrintTranscript();
             printTranscriptForm.Show();
         }

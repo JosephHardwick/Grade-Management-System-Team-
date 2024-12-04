@@ -246,7 +246,7 @@ namespace CSC440Team
                     cmd.Parameters.AddWithValue("@ID", this.ID);
                     cmd.Parameters.AddWithValue("@GPA", this.GPA);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("GPA updated successfully");
+                    //MessageBox.Show("GPA updated successfully");
                    
 
                 }
