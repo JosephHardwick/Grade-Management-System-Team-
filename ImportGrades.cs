@@ -53,13 +53,8 @@ namespace CSC440Team
                 MessageBox.Show("Invalid file name. \n Please ensure your file is of the format [Course prefix] [Course Number] [Year] [semester] [Credit Hours].xlsx");
                 return;
             }
-            //check that the file is not open
-            bool w = WorkBook.TryLoad(filePath, out WorkBook workBook2);
-            if (w == false)
-            {
-                MessageBox.Show("Excel sheet is Open, please close the file and try again.");
-                return;
-            }
+            
+          
 
             //seperate file name into DB fields
             string[] fileNameDetails = fileNoEx.Split(' ');
@@ -143,13 +138,23 @@ namespace CSC440Team
         {
 
             IronXL.License.LicenseKey = "IRONSUITE.JOSEPHHARDWICK04.GMAIL.COM.22294-29C49DA80D-JJEIV-V5VLMKZCCM4P-CZ2IVHPSSYAR-EEY4W3JWWWJH-XXOA4PUGSQID-MR3GM4ARNUSQ-EEJVOQR6HOBD-M722E4-TDKLWRRI5RSOEA-DEPLOYMENT.TRIAL-WPI7OV.TRIAL.EXPIRES.01.JAN.2025";
-           
+
+            //ensure file is not open
+            if (!WorkBook.TryLoad(filePath, out WorkBook workBook2))
+            {
+                MessageBox.Show("Excel sheet is Open, please close the file and try again.");
+                return;
+            }
+
             var workbook = WorkBook.Load(filePath);
             var workSheet = workbook.WorkSheets.First();
             var cell = workSheet["A2"];
             int RC = workSheet.Rows.Count();
             int CC = workSheet.Columns.Count();
             int studentID = 0;
+
+           
+
 
             //check that grades are valid
             for (int i = 2; i <= RC; i++)
