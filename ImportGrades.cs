@@ -292,7 +292,7 @@ namespace CSC440Team
                 }
                 else
                 {
-                    MessageBox.Show("Either invalid file name or this file is open: " + fileNames[i]);
+                    MessageBox.Show("Either invalid file name: " + fileNames[i]);
                     return;
                 }
             }
