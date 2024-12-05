@@ -53,6 +53,14 @@ namespace CSC440Team
                 MessageBox.Show("Invalid file name. \n Please ensure your file is of the format [Course prefix] [Course Number] [Year] [semester] [Credit Hours].xlsx");
                 return;
             }
+            //check that the file is not open
+            bool w = WorkBook.TryLoad(filePath, out WorkBook workBook2);
+            if (w == false)
+            {
+                MessageBox.Show("Excel sheet is Open, please close the file and try again.");
+                return;
+            }
+
             //seperate file name into DB fields
             string[] fileNameDetails = fileNoEx.Split(' ');
             Course course = new Course(fileNameDetails[0], fileNameDetails[1], int.Parse(fileNameDetails[2]), fileNameDetails[3], int.Parse(fileNameDetails[4]));
@@ -135,7 +143,7 @@ namespace CSC440Team
         {
 
             IronXL.License.LicenseKey = "IRONSUITE.JOSEPHHARDWICK04.GMAIL.COM.22294-29C49DA80D-JJEIV-V5VLMKZCCM4P-CZ2IVHPSSYAR-EEY4W3JWWWJH-XXOA4PUGSQID-MR3GM4ARNUSQ-EEJVOQR6HOBD-M722E4-TDKLWRRI5RSOEA-DEPLOYMENT.TRIAL-WPI7OV.TRIAL.EXPIRES.01.JAN.2025";
-
+           
             var workbook = WorkBook.Load(filePath);
             var workSheet = workbook.WorkSheets.First();
             var cell = workSheet["A2"];
@@ -279,7 +287,7 @@ namespace CSC440Team
                 }
                 else
                 {
-                    MessageBox.Show("Invalid file name " + fileNames[i]);
+                    MessageBox.Show("Either invalid file name or this file is open: " + fileNames[i]);
                     return;
                 }
             }
