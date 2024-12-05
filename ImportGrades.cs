@@ -36,7 +36,7 @@ namespace CSC440Team
         {
 
 
-
+            //gathering file data
             string filePath = "";
             string file = "";
             string fileNoEx = "";
@@ -77,7 +77,7 @@ namespace CSC440Team
 
 
 
-
+        //regex to validate naming convention
         private bool IsValidFileName(string fileName)
         {
             string pattern1 = @"^[A-Z]{3}\s\d{3}\s\d{4}\s(Spring|Summer|Fall|Winter)\s\d\.xlsx$";
@@ -101,7 +101,7 @@ namespace CSC440Team
         }
 
 
-
+        //ensure student does not already have grade in this course 
         private bool GradeExists(int SID, int CRN)
         {
             string query = "SELECT * FROM cabj_grades_1 WHERE CRN = @CRN AND StudentID = @SID";
@@ -146,6 +146,7 @@ namespace CSC440Team
                 return;
             }
 
+            //init workbook and worksheet
             var workbook = WorkBook.Load(filePath);
             var workSheet = workbook.WorkSheets.First();
             var cell = workSheet["A2"];

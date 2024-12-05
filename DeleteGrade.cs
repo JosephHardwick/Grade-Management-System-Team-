@@ -24,22 +24,22 @@ namespace CSC440Team
 
 
         }
+
+        //populate the list view
         private void populateList(string cName, string course, string semester, string grade, string crn)
         {
-
-
             ListViewItem item = new ListViewItem(course);
             item.SubItems.Add(semester);
             item.SubItems.Add(grade);
             item.SubItems.Add(cName);
             item.Tag = crn;
             listView1.Items.Add(item);
-
-
-
         }
+
+       
         private void button1_Click(object sender, EventArgs e)
         {
+            //refresh list view
             listView1.Items.Clear();
             gradeSelected = false;//reset every time the button is clicked
             // Compress the string in the masked text box to an int

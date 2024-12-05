@@ -24,6 +24,7 @@ namespace CSC440Team
 
         }
 
+        //updating grade in DB with new grade
         private void button1_Click(object sender, EventArgs e)
         {
             string connStr = "server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;";
